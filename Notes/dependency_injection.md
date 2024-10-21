@@ -37,8 +37,9 @@ punch.drive();
 
 > ANALOGY  
 ***Think of a restaurant:***
-Without IoC: The chef (your class) buys ingredients (dependencies), prepares the meal, and serves it.
-With IoC/DI: The chef is simply given ingredients by a delivery service (IoC container), and the chef just prepares the meal.
+- Without IoC: The chef (your class) buys ingredients (dependencies), prepares the meal, and serves it.
+
+- With IoC/DI: The chef is simply given ingredients by a delivery service (IoC container), and the chef just prepares the meal.
 
 ```
 Dependency Injection is one way to achieve Inversion of Control, there are several other design patterns that also invert control:

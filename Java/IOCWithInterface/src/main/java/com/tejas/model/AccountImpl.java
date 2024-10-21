@@ -14,11 +14,13 @@ public class AccountImpl implements Account {
 
 	public AccountImpl(int id, double balance, 
 			String type, Logger logger) {
+		
 		super();
 		this.id = id;
 		this.balance = balance;
 		this.type = type;
 		this.logger = logger;
+		logger.log("IN AccountImpl(int , double , String , Logger ) : CONSRTUCTOR BASED DI");
 	}
 	
 
@@ -32,6 +34,7 @@ public class AccountImpl implements Account {
 	}
 
 	public void setId(int id) {
+		logger.log("In setBalance()");
 		this.id = id;
 	}
 
@@ -41,14 +44,17 @@ public class AccountImpl implements Account {
 	}
 
 	public void setBalance(double balance) {
+		logger.log("In setBalance()");
 		this.balance = balance;
 	}
 
 	public String getType() {
+	
 		return type;
 	}
 
 	public void setType(String type) {
+		logger.log("In setType()");
 		this.type = type;
 	}
 
