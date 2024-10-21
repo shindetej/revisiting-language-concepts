@@ -1,1 +1,30 @@
+
+
+# Java compiled files
+*.class
+*bin/
+
+# Log files
+*.log
+
+# Maven
+target/
+
+## Eclipse
+##############################
+.settings/
+bin/
+tmp/
 /.metadata/
+.classpath
+.project
+*.tmp
+*.bak
+*.swp
+local.properties
+.loadpath
+.factorypath
+
+
+# STS
+.springBeans
