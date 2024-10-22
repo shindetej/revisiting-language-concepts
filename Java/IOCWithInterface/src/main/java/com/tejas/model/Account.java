@@ -1,5 +1,7 @@
 package com.tejas.model;
 
+import com.tejas.logger.Logger;
+
 public interface Account {
 	void setId(int id);
 	int getId();
@@ -9,6 +11,8 @@ public interface Account {
 	
 	void setBalance(double amount);
 	double getBalance();
+	
+	void setLogger(Logger logger); // set logger added
 	
 	void deposit(double amount);
 	void withdraw(double amount);

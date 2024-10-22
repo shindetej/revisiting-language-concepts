@@ -23,10 +23,7 @@ public class AccountImpl implements Account {
 		logger.log("IN AccountImpl(int , double , String , Logger ) : CONSRTUCTOR BASED DI");
 	}
 	
-
-
 	public AccountImpl() {
-		this.logger = new  FileLoggerImpl();
 	}
 
 	public int getId() {
@@ -34,17 +31,15 @@ public class AccountImpl implements Account {
 	}
 
 	public void setId(int id) {
-		logger.log("In setBalance()");
 		this.id = id;
 	}
 
 	public double getBalance() {
-		logger.log("In getBalance()  :"+ this.balance);
+		
 		return balance;
 	}
 
 	public void setBalance(double balance) {
-		logger.log("In setBalance()");
 		this.balance = balance;
 	}
 
@@ -54,9 +49,15 @@ public class AccountImpl implements Account {
 	}
 
 	public void setType(String type) {
-		logger.log("In setType()");
 		this.type = type;
 	}
+	
+
+	public void setLogger(Logger logger) {
+		this.logger = logger;
+	}
+
+
 
 	@Override
 	public void deposit(double amount) {

@@ -28,15 +28,15 @@ public class DiDemo2Application implements CommandLineRunner {
 		
 		Account sacc = (Account) context.getBean("savings");
 		System.out.println("Initial Balance : "+ sacc.getBalance());
-		sacc.deposit(12000);
+		sacc.deposit(8000);
 		sacc.withdraw(7000);
 		System.out.println("Final Balance : "+ sacc.getBalance());
 		
 		System.out.println("-------- CURRENT ACCOUNT ------");
 		Account currentAcc = (Account) context.getBean("current");
 		System.out.println("Initial Balance : "+ currentAcc.getBalance());
-		currentAcc.deposit(9000);
-		currentAcc.withdraw(46300);
+		currentAcc.deposit(5500);
+		currentAcc.withdraw(12300);
 		System.out.println("Final Balance : "+ currentAcc.getBalance());
 	}
 	
