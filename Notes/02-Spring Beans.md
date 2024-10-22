@@ -35,7 +35,7 @@ Bean lifecycle :
     10. DisposableBean - destroy():
 - Lifecycle Steps for rect2 Bean: 
     1. Constructor Injection: 
-    2. All other steps from 3 to 10 as it is
+    2. All other steps from 3 to 10 as above
 
     
 ---
@@ -49,6 +49,8 @@ Bean lifecycle :
 
 - @EnableAutoConfiguration: tells Spring Boot to automatically configure your application based on the dependencies and configurations available on the classpath.
 ---
+
+
 
 
 

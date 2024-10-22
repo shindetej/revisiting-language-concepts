@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tejas</groupId>
-	<artifactId>SpringLifeCycleDemo</artifactId>
+	<artifactId>AnnotationDemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringLifeCycleDemo</name>
+	<name>AnnotationDemo</name>
 	<description>Demo project for Dependency Injection using Annotation</description>
 	<url/>
 	<licenses>

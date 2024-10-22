@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tejas</groupId>
-	<artifactId>DIDemo2</artifactId>
+	<artifactId>IOCWithInterface</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>DIDemo2</name>
-	<description>Demo project for Dependency Injection using Annotation</description>
+	<name>IOCWithInterface</name>
+	<description>Use of interface with IOC</description>
 	<url/>
 	<licenses>
 		<license/>
