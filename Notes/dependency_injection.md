@@ -105,13 +105,6 @@ Observer Pattern - In the Observer pattern, the control over when to notify the 
 3. Field based DI : 
 
 
-Bean lifecycle :
-1. **Bean Instantiation**: Spring creates the bean.
-2. **Dependency Injection**: Spring injects dependencies or properties.
-3. **Custom Initialization**: Any initialization logic runs (optional).
-4. **Ready for Use**: The bean is fully configured and can be used.
-5. **Destruction**: Cleanup happens before the bean is removed (optional).
-
 ---
 Interfaces Usecase:
 ![](di_interfaces.png)
