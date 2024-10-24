@@ -7,14 +7,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-public class DiDemo2Application implements CommandLineRunner {
+public class SpringBeanLifeCycleDemo implements CommandLineRunner {
 
 	@Autowired
 	private ApplicationContext context;
 	
 	
 	public static void main(String[] args) {
-		SpringApplication.run(DiDemo2Application.class, args);
+		SpringApplication.run(SpringBeanLifeCycleDemo.class, args);
 	}
 
 	@Override
