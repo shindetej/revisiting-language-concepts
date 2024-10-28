@@ -5,16 +5,23 @@
 3. Inheritance = Hierarchial Relationship , Composition = modular 
 ----
 ### Dependency Injection : 
+---
+
+
+```java
 Car punch =  new Car();
---- 
-**Utility Methods like setting modular objects which is OUTER REQUIREMENT AND NOT CORE BUSINESS NEED as below**
 punch.setEngine();
 punch.setChassis();
 punch.setGear()
----
-**Business Logic methods are using utility object to serve BUSINESS NEED**
-punch.drive();
 
+// business need
+punch.drive();
+```
+- Utility Methods like setting modular objects which is OUTER REQUIREMENT AND NOT CORE BUSINESS NEED as below
+
+- Business Logic methods are using utility object to serve BUSINESS NEED
+
+---
 - Purpose : Used to decouple(LOOSE COUPLING) object creation and dependencies, provide flexibility (i.e dependencies can be changed or swapped easily without modifying the class), testing, and maintainability.
 - More flexible than OOP composition, as dependencies can be changed or swapped easily without modifying the class.
 - Dependency Injection : About setting up required things which are outer requirement & not core business logic
@@ -26,18 +33,21 @@ punch.drive();
 - With IoC, The class doesn't control the creation of its dependencies; they are injected from the outside.
 - outside means - (Spring or other framework) controls the creation, configuration, and lifecycle of objects.
 - external entity (like a framework) takes responsibility for providing dependencies.
-> Spring Container is called IOC Container Why?
+> Q. Spring Container is called IOC Container Why?
 
-## ANALOGY  
+> ANALOGY  
 ***Think of a restaurant:***
-Without IoC: The chef (your class) buys ingredients (dependencies), prepares the meal, and serves it.
-With IoC/DI: The chef is simply given ingredients by a delivery service (IoC container), and the chef just prepares the meal.
+- Without IoC: The chef (your class) buys ingredients (dependencies), prepares the meal, and serves it.
 
+- With IoC/DI: The chef is simply given ingredients by a delivery service (IoC container), and the chef just prepares the meal.
 
+```
 Dependency Injection is one way to achieve Inversion of Control, there are several other design patterns that also invert control:
+
 Event-Driven Architecture (Callback Pattern) - control to event  
 Observer Pattern - In the Observer pattern, the control over when to notify the observers is inverted
-=======================================================================================
+```
+=========================
 ## Three ways of DI : 
 1. Setter based DI
 ```xml
@@ -84,4 +94,17 @@ Observer Pattern - In the Observer pattern, the control over when to notify the 
 		context.close();
 	}
 ```
+- Below image see: 
+	1. rect1, rect2 bean are defined in a @Configuration class using a @Bean method. At runtime, Spring will invoke that method and create an instance of Rectangle (or retrieve an already created instance if the bean is singleton-scoped). 
+	2. When you call context.getBean("rect1"), Spring looks up the bean named rect1 in the ApplicationContext.
+
+![](di.png)
+
+
+
 3. Field based DI : 
+
+
+---
+Interfaces Usecase:
+![](di_interfaces.png)
