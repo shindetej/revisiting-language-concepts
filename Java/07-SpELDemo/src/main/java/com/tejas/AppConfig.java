@@ -1,7 +1,9 @@
 package com.tejas;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import com.tejas.logger.ConsoleLoggerImpl;
 import com.tejas.logger.FileLoggerImpl;
@@ -11,41 +13,49 @@ import com.tejas.model.AccountImpl;
 import com.tejas.model.Person;
 import com.tejas.model.PersonImpl;
 
+@PropertySource({ "classpath:demo.properties" })
 @Configuration
 public class AppConfig {
-	
-	private  Logger logger;
+
+	private Logger logger;
 	/*
 	 * @Bean public Logger consoleLogger() { Logger logger = new
 	 * ConsoleLoggerImpl(); return logger; }
 	 */
 
-	public  AppConfig(FileLoggerImpl logger) {
+	public AppConfig(FileLoggerImpl logger) {
 		this.logger = logger;
 	}
 
 	@Bean
 	public Account savings() {
 		Account acc = new AccountImpl(101, 10000, "SAVINGS", null);
-		acc.setPerson(p1());
+		// acc.setPerson(p1());
 		return acc;
 	}
 
+	@ConfigurationProperties(prefix = "p1")
 	@Bean
-	public Person p1() {
-		return new PersonImpl("Suresh", "suresh@gmail.com", "9920112211");
+	public Person person1() {
+		return new PersonImpl();
 	}
 
+	@ConfigurationProperties(prefix = "p2")
+	@Bean
+	public Person p2() {
+		return new PersonImpl();
+	} 
+
+	@ConfigurationProperties(prefix = "a1")
 	@Bean
 	public Account current() {
-		Account acc = new AccountImpl();
-//		acc.setLogger(fileLogger());
-		acc.setLogger(this.logger);
-		acc.setBalance(45000);
-		acc.setId(792);
-		acc.setType("CURRENT");
-		acc.setPerson(p1());
-		return acc;
+		return new AccountImpl();
+	}
+	
+	@ConfigurationProperties(prefix = "a2")
+	@Bean
+	public Account saving() {
+		return new AccountImpl();
 	}
 
 }

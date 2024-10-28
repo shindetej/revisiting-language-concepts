@@ -6,12 +6,15 @@ import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
 
-@Component
+@Component("fileLogger")
 public class FileLoggerImpl implements Logger {
+	
+	@Value("${log.filepath}")
 	private String logFilePath;
 	
 	@PostConstruct
