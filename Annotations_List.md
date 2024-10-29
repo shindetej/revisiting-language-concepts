@@ -18,7 +18,8 @@
 ------------------------
 - SpEL
     1. @PropertySource({"classpath:demo.properties"})
-    2. @Value("${log.filepath}")
+    2. @Value("${log.filepath}") -> takes value from properties file ($ for properties file values)
+    3. @Value("#{e1.email}") ->  e1.getEmail() method called to get email (# for class field)
     3. @ConfigurationProperties(prefix = "p2") : using properties file prefix
 
 ---

@@ -1,7 +1,7 @@
 Interview 1 | 26102024 | Java developer position 
 - How your services communicates
 - Spring bean Scopes
-- Spring Actuator
+- Spring Actuator ? how you monitor health of the app
 - what is spring boot 3? what enhancement offered over spring 2
 - Why Java is not fully OOP : answered :  because premitive types + they expected more reasons
 - Collection Questions
