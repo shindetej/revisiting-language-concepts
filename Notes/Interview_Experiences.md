@@ -1,4 +1,24 @@
-Interview 1 | 26102024 | Java developer position 
+#### Spring boot Questions: 
+
+1. What is spring boot?
+2. Spring boot over spring framework?
+3. working of spring boot
+4. How spring boot starts 
+    - main method (SpringApplication.run(Classfile,args)) -> creates application context
+    - @SpringBootApplication => working
+5. All basic Annotations 
+6. what are spring boot starters?
+7. Key starter dependencies.
+8. how to manually configure maven dependencies?
+9. what is Spring boot CLI and benefits of it
+10. What is thymleaf?
+---
+#### Spring quesions:
+- What is IOC? / dependency injection?
+- Spring bean lifecycle.
+
+
+#### **Interview 1 | 26102024 | Java developer position** 
 - How your services communicates
 - Spring bean Scopes
 - Spring Actuator ? how you monitor health of the app
