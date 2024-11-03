@@ -76,3 +76,18 @@ public class ApplicationScopedBean {
     // Single instance of this bean shared across the entire application
 }
 ```
+---
+
+#### different cases :
+1. Singleton bean inside prototype bean
+    - single singleton object created
+    - each call to getBean() create new prototype bean but same singleton bean autowired with them
+
+2. Prototype bean inside singleton bean
+    - Single singleton bean object is created.
+    - Since there is single singleton bean there is single proptotype bean
+
+    - what if we need everytime new prototype bean?
+        - get context in singleton bean everytime **using ApplicationContextAware extended by singletton class (OUTER)** (soln 1)
+            - and use then context.getBean() to get prototype bean
+        - use @Lookup method (soln 2)
