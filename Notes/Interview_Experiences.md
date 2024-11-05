@@ -36,8 +36,8 @@
     - Thread lifecycle [ Failed Here]
     - Wait and notify difference
     - Create thread using java 8 
-
 - postgresql vs mongo difference
+
 ---
 ### Prepare
 - Elevators Pitch
