@@ -39,6 +39,18 @@
 - postgresql vs mongo difference
 
 ---
+#### **Interview 1 | 05112024 | Java developer position** 
+- how you monitor the health of the applications
+- how you have deployed spring boot application on aws server
+- what kind of logs used on production server (log_info,LOG_DEBUG)
+- how you have implmented spring security in your code
+- use comparator to give me descending order (expected to use comparator.reverseOrder())
+- give me department where more than 3 employees working
+- @autowired and @bean difference
+- method reference and lambda expression difference
+- map() in java8 and other any map difference
+
+
 ### Prepare
 - Elevators Pitch
 - Java : 
