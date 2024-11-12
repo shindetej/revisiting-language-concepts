@@ -1,9 +1,56 @@
 ### LIST OF ANNOTATIONS WITH USAGE MEANING
+#### Interview question :  What annotations do you used in your project? / tell me annotations in spring boot
+1. we wiil start with @SpringBootApplication annotation which is entry point of a Spring Boot application having internally three main annotations
+2.  @Configuration  : Class marked as source of bean definitions
+3.  @EnableAutoConfiguration : enables spring boots auto configuration feature  
+4.  @ComponentScan :  scanning of Spring components within package and sub packages
+5.  @Component : 
+6. @Bean - used to define a bean in a Spring configuration class.  tells Spring that the annotated method will return an object that should be registered as a bean in the Spring ApplicationContext. 
+4. @Autowired - 
+  -  used to automatically inject dependencies into Spring beans.
+  -  applied to a field, setter, or constructor
+  -  reduces the need for explicit bean management
+7. @Component  : It is a generic stereotype annotation used to mark a class as a Spring bean
+8. @Controller : specialized version of @Component used to mark a class as a Spring MVC controller /responsible for handling HTTP requests. 
+9. @Service    : specialization of @Component used to mark a class as a service in the service layer of an application.
+10. @Repository :  specialization of @Component that marks a class as a Data Access Object (DAO) in the persistence layer
+
+---- Controller based annotations ---
+
+-  @RestController: A combination of @Controller and @ResponseBody used for RESTful web services; it eliminates the need to annotate each method with @ResponseBody.
+- @RequestMapping: Maps HTTP requests to handler methods of MVC and REST controllers. You can specify the URL, method type (GET, POST, etc.), and other parameters.
+- @GetMapping, @PostMapping, @PutMapping, @DeleteMapping: Shortcut annotations for mapping HTTP GET, POST, PUT, DELETE requests to handler methods.
+
+--- JPA Methods ----------------
+
+- @Repository: Marks a class as a Data Access Object (DAO). It also indicates that any exceptions thrown should be translated into Spring’s DataAccessException.
+- @Entity: Marks a class as a JPA entity, mapping it to a database table.
+- @Table: Specifies the table name in the database that the entity is mapped to.
+- @Id: Denotes the primary key of an entity.
+- @GeneratedValue: Automatically generates values for primary keys.
+- @Column: Specifies the details of a column mapped to a field in the entity class.
+- @ManyToOne, @OneToMany, @OneToOne, @ManyToMany: These are JPA annotations to define relationships between entities.
+- @Transactional: Used to manage transactions in Spring, either at the class or method level.
+
+--- Exception Handling Annotations -----
+
+- @ExceptionHandler: Handles specific exceptions thrown by methods in a controller. You can use it to send custom error responses or perform additional logging.
+- @ResponseStatus: Allows you to define a specific HTTP status code for a method or exception class.
+- @ControllerAdvice: Provides global exception handling across all controllers. It's typically used for handling application-wide exceptions and applying common behaviors for error handling.
+
+---- Other Important Annotations ----
+- @Value: Used to inject values into fields from property files or environment variables.
+- @Profile: Defines beans that are only available in specific profiles. It’s useful for environment-specific configuration.
+- @Scope: Defines the scope of a bean (e.g., singleton, prototype, request, session).
+- @Async: Marks a method for asynchronous execution.
+- @Cacheable: Marks a method to have its result cached. It is useful in performance optimization by storing the result of expensive method calls.
+- @EnableCaching: Enables caching within a Spring application. It is typically used on configuration classes.
+- @EnableScheduling: Enables Spring’s scheduled task execution capability.
+
 - Spring configurations and bean creation
     1. @Configuration
     2. @Bean
     3. @Autowired
-
 -------------------------
 - Lifecycle related
     1. @PostConstruct

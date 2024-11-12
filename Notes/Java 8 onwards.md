@@ -17,6 +17,14 @@
 ---
 
 ### **1. Lambda Expressions** (Foundation)
+- Java has methods (also called functions) which has input parameters and return types 
+- lambda expression is consise way to represent such functions
+- more expressive and less verbose(unnecessory code syntax)
+- why lambda? : came from lambda calculas where functions are represented using lambda notation
+    - in Java Lambda referes to anonymous functions i.e without name
+```java
+(parameters) -> expression
+```
    - **Importance**: Lambda expressions are the core feature of Java 8 and allow you to write cleaner, more readable, and concise code, especially for functional-style operations.
    - **Learn**:
      - Syntax of lambda expressions.
@@ -31,15 +39,15 @@
 ---
 
 ### **2. Functional Interfaces** (Closely tied to lambdas)
-   - **Importance**: A functional interface has a single abstract method and is crucial for understanding lambda expressions.
-   - **Learn**:
-     - Built-in functional interfaces like `Predicate`, `Function`, `Consumer`, `Supplier`.
-     - Create custom functional interfaces.
-     - **Practical Exercises**: Implement built-in functional interfaces and create custom ones.
-     ```java
-     Predicate<Integer> isEven = number -> number % 2 == 0;
-     System.out.println(isEven.test(4));  // true
-     ```
+- **Importance**: A functional interface has a single abstract method and is crucial for understanding lambda expressions.
+- **Learn**:
+    - Built-in functional interfaces like `Predicate`, `Function`, `Consumer`, `Supplier`.
+    - Create custom functional interfaces.
+    - **Practical Exercises**: Implement built-in functional interfaces and create custom ones.
+    ```java
+    Predicate<Integer> isEven = number -> number % 2 == 0;
+    System.out.println(isEven.test(4));  // true
+    ```
 
 ---
 
@@ -234,48 +242,12 @@
      ```java
         ClassName::methodName
      ```
-- Method references can be used to refer to:
     
-    - Static methods.
-    ```java
-    (args) -> ClassName.staticMethod(args)
-    // Becomes
-    ClassName::staticMethod
-    ```
-    - Instance methods of a particular object.
-    ```
-    (args) -> instance.method(args)
-    // Becomes
-    instance::method
-    ```
-    - Instance methods of an arbitrary object of a particular type.
-    ```java
-    (args) -> instance.method(args)
-    // Becomes
-    instance::method
-    ```
-    - Constructors.
-    ```java
-    () -> new ClassName(args)
-    // Becomes
-    ClassName::new
-    ```    
 
 ---
 
 ### **5. Default and Static Methods in Interfaces** (Enhances interface capabilities)
-   - **Importance**: Java 8 introduced default and static methods in interfaces to provide method implementations in interfaces without breaking existing implementations.
-   - **Learn**:
-     - Adding default methods in interfaces.
-     - Defining static methods in interfaces.
-     - **Practical Exercises**: Add a default method to an existing interface without breaking the implementation.
-     ```java
-     interface MyInterface {
-         default void sayHello() {
-             System.out.println("Hello from MyInterface");
-         }
-     }
-     ```
+- 
 
 ---
 
@@ -334,16 +306,12 @@
 ---
 
 ### **10. CompletableFuture (Asynchronous Programming)** (Advanced)
-   - **Importance**: `CompletableFuture` is a powerful tool for writing asynchronous code in Java.
-   - **Learn**:
+- **Importance**: `CompletableFuture` is a powerful tool for writing asynchronous code in Java.
+- **Learn**:
      - Creating and running asynchronous tasks.
      - Combining multiple `CompletableFuture` tasks.
      - Error handling with `CompletableFuture`.
-     - **Practical Exercises**: Implement asynchronous tasks using `CompletableFuture`.
-     ```java
-     CompletableFuture.supplyAsync(() -> "Hello")
-         .thenAccept(result -> System.out.println(result));
-     ```
+
 
 ---
 
@@ -353,10 +321,7 @@
      - Running JavaScript code from Java using Nashorn.
      - Embedding JavaScript in Java applications.
      - **Practical Exercises**: Execute JavaScript code using the Nashorn engine.
-     ```java
-     ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-     engine.eval("print('Hello from Nashorn')");
-     ```
+     
 
 ---
 
@@ -384,4 +349,240 @@
      Map<String, Integer> map = new HashMap<>();
      map.computeIfAbsent("Java", key -> 1);
      ```
+
+---
+
+### **COLLECTORS CLASS METHOD USE CASES**
+- The `Collectors` class in Java is part of the Stream API, and it provides various methods to create collectors, which can be used to perform reduction operations on streams like grouping, counting, summarizing, etc. 
+- These methods are often used with `Stream.collect()` to process and accumulate elements of a stream into various forms such as lists, sets, maps, or even custom results.
+
+### USE CASES LIST: 
+- **`Collectors.groupingBy()`**: Group elements by a key.
+- **`Collectors.counting()`**: Count elements.
+- **`Collectors.toList()`**: Collect elements into a list.
+- **`Collectors.toSet()`**: Collect elements into a set.
+- **`Collectors.joining()`**: Concatenate elements into a string.
+- **`Collectors.summingInt()`**: Sum integer values.
+- **`Collectors.averagingInt()`**: Calculate the average of integer values.
+- **`Collectors.maxBy()`**: Find the maximum element.
+- **`Collectors.mapping()`**: Apply a mapping function and collect.
+- **`Collectors.partitioningBy()`**: Partition elements into two groups.
+
+### Common `Collectors` Methods and Their Use Cases:
+
+1. **`Collectors.groupingBy()`**:
+   Groups elements of the stream by a classifier function, similar to SQL's `GROUP BY`.
+
+   - **Use Case**: Group elements by a key and return a `Map` with the key and the grouped elements.
+
+   **Example**:
+   ```java
+   List<String> items = Arrays.asList("apple", "banana", "orange", "apple", "orange", "banana", "banana");
+
+   // Group items by their name
+   Map<String, Long> groupedItems = items.stream()
+       .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+   System.out.println(groupedItems);
+   ```
+
+   **Output**:
+   ```
+   {orange=2, banana=3, apple=2}
+   ```
+
+   **Variants**:
+   - `groupingBy(classifier)`: Groups elements based on a classifier function.
+   - `groupingBy(classifier, downstream)`: Groups elements and applies a downstream collector to each group.
+   - `groupingBy(classifier, supplier, downstream)`: Uses a custom `Map` implementation to store the results.
+
+2. **`Collectors.counting()`**:
+   Counts the number of elements in a stream. It’s often used as a downstream collector for `groupingBy()` or other collectors.
+
+   - **Use Case**: Count the total number of elements in a stream or the number of elements in each group.
+
+   **Example**:
+   ```java
+   List<String> items = Arrays.asList("apple", "banana", "orange", "apple", "orange");
+
+   // Count the total number of elements
+   long count = items.stream()
+       .collect(Collectors.counting());
+
+   System.out.println("Total count: " + count);
+   ```
+
+   **Output**:
+   ```
+   Total count: 5
+   ```
+
+3. **`Collectors.toList()`**:
+   Collects the elements of the stream into a `List`.
+
+   - **Use Case**: Convert a stream back to a `List`.
+
+   **Example**:
+   ```java
+   List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+   // Collect the stream into a list
+   List<Integer> resultList = numbers.stream()
+       .filter(n -> n % 2 == 0)
+       .collect(Collectors.toList());
+
+   System.out.println(resultList);
+   ```
+
+   **Output**:
+   ```
+   [2, 4]
+   ```
+
+4. **`Collectors.toSet()`**:
+   Collects the elements of the stream into a `Set`.
+
+   - **Use Case**: Collect unique elements into a set.
+
+   **Example**:
+   ```java
+   List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 2, 3);
+
+   // Collect the stream into a set
+   Set<Integer> resultSet = numbers.stream()
+       .collect(Collectors.toSet());
+
+   System.out.println(resultSet);
+   ```
+
+   **Output**:
+   ```
+   [1, 2, 3, 4, 5]
+   ```
+
+5. **`Collectors.joining()`**:
+   Concatenates the elements of a stream into a single `String`. Optionally, you can provide a delimiter, prefix, and suffix.
+
+   - **Use Case**: Join elements into a string, e.g., CSV format or space-separated values.
+
+   **Example**:
+   ```java
+   List<String> words = Arrays.asList("apple", "banana", "orange");
+
+   // Join words into a single string
+   String result = words.stream()
+       .collect(Collectors.joining(", "));
+
+   System.out.println(result);
+   ```
+
+   **Output**:
+   ```
+   apple, banana, orange
+   ```
+
+6. **`Collectors.summingInt()`, `summingDouble()`, `summingLong()`**:
+   Summing collectors that sum up the values of a specific property in the elements.
+
+   - **Use Case**: Summing properties of objects in a stream.
+
+   **Example**:
+   ```java
+   List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+   // Sum the numbers in the list
+   int sum = numbers.stream()
+       .collect(Collectors.summingInt(Integer::intValue));
+
+   System.out.println(sum);
+   ```
+
+   **Output**:
+   ```
+   15
+   ```
+
+7. **`Collectors.averagingInt()`, `averagingDouble()`, `averagingLong()`**:
+   Calculates the average of numeric properties of objects in a stream.
+
+   - **Use Case**: Find the average of numeric values.
+
+   **Example**:
+   ```java
+   List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+   // Find the average of numbers in the list
+   double average = numbers.stream()
+       .collect(Collectors.averagingInt(Integer::intValue));
+
+   System.out.println(average);
+   ```
+
+   **Output**:
+   ```
+   3.0
+   ```
+
+8. **`Collectors.maxBy()` and `Collectors.minBy()`**:
+   Find the maximum or minimum element according to a given comparator.
+
+   - **Use Case**: Get the largest or smallest element based on a property.
+
+   **Example**:
+   ```java
+   List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+   // Find the max element
+   Optional<Integer> max = numbers.stream()
+       .collect(Collectors.maxBy(Comparator.naturalOrder()));
+
+   max.ifPresent(System.out::println);
+   ```
+
+   **Output**:
+   ```
+   5
+   ```
+
+9. **`Collectors.mapping()`**:
+   Applies a mapping function before collecting the elements.
+
+   - **Use Case**: Transform the elements before collecting them.
+
+   **Example**:
+   ```java
+   List<String> names = Arrays.asList("John", "Jane", "Jack");
+
+   // Collect to a list of uppercase names
+   List<String> upperCaseNames = names.stream()
+       .collect(Collectors.mapping(String::toUpperCase, Collectors.toList()));
+
+   System.out.println(upperCaseNames);
+   ```
+
+   **Output**:
+   ```
+   [JOHN, JANE, JACK]
+   ```
+
+10. **`Collectors.partitioningBy()`**:
+    Partitions the elements of a stream into two groups based on a predicate. It returns a `Map<Boolean, List<T>>`.
+
+    - **Use Case**: Split elements into two groups (true/false based on a condition).
+
+    **Example**:
+    ```java
+    List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+    // Partition numbers into even and odd
+    Map<Boolean, List<Integer>> partitioned = numbers.stream()
+        .collect(Collectors.partitioningBy(n -> n % 2 == 0));
+
+    System.out.println(partitioned);
+    ```
+
+    **Output**:
+    ```
+    {false=[1, 3, 5], true=[2, 4]}
+    ```
 

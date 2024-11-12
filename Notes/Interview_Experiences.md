@@ -1,22 +1,30 @@
-#### Spring boot Questions: 
+#### **Interview 1 | 11112024 | Java Developer ** --- next round (endava)          
+- Java versions after java 8
+- Java 8 default method in interfaces
+- puzzle of 3 Litre and 5 litre jar to fill 4 litre jar
+- get tickets count for employee list from table where ticketlist is present
+- 
 
-1. What is spring boot?
-2. Spring boot over spring framework?
-3. working of spring boot
-4. How spring boot starts 
-    - main method (SpringApplication.run(Classfile,args)) -> creates application context
-    - @SpringBootApplication => working
-5. All basic Annotations 
-6. what are spring boot starters?
-7. Key starter dependencies.
-8. how to manually configure maven dependencies?
-9. what is Spring boot CLI and benefits of it
-10. What is thymleaf?
----
-#### Spring quesions:
-- What is IOC? / dependency injection?
-- Spring bean lifecycle.
+#### **Interview 1 | 09112024 | Sr. SD** ---- tech m failed
+- Encapsulation and access modifiers
+- Annotations used in your spring project - answer this in good structured way
+- can we use @Component instead of @Service over service layer class
+- Java 8 features
+    - write a code to find count of each element in string array 
+    - write a code to find second highest salary employee
+- Unit testing and integration testing difference 
+- Mockbean difference
 
+#### **Interview 1 | 05112024 | Java developer position**  --- next round
+- how you monitor the health of the applications
+- how you have deployed spring boot application on aws server
+- what kind of logs used on production server (log_info,LOG_DEBUG)
+- how you have implmented spring security in your code
+- use comparator to give me descending order (expected to use comparator.reverseOrder())
+- give me department where more than 3 employees working
+- @autowired and @bean difference
+- method reference and lambda expression difference
+- map() in java8 and other any map difference
 
 #### **Interview 1 | 26102024 | Java developer position** 
 - How your services communicates
@@ -39,16 +47,7 @@
 - postgresql vs mongo difference
 
 ---
-#### **Interview 1 | 05112024 | Java developer position** 
-- how you monitor the health of the applications
-- how you have deployed spring boot application on aws server
-- what kind of logs used on production server (log_info,LOG_DEBUG)
-- how you have implmented spring security in your code
-- use comparator to give me descending order (expected to use comparator.reverseOrder())
-- give me department where more than 3 employees working
-- @autowired and @bean difference
-- method reference and lambda expression difference
-- map() in java8 and other any map difference
+
 
 
 ### Prepare
@@ -76,3 +75,22 @@ SQL -
 
 Spring Batch Processing
 -------------------------------------
+
+#### Spring boot Questions: 
+
+1. What is spring boot?
+2. Spring boot over spring framework?
+3. working of spring boot
+4. How spring boot starts 
+    - main method (SpringApplication.run(Classfile,args)) -> creates application context
+    - @SpringBootApplication => working
+5. All basic Annotations 
+6. what are spring boot starters?
+7. Key starter dependencies.
+8. how to manually configure maven dependencies?
+9. what is Spring boot CLI and benefits of it
+10. What is thymleaf?
+---
+#### Spring quesions:
+- What is IOC? / dependency injection?
+- Spring bean lifecycle.

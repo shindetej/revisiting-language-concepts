@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
+//@ComponentScan
+//@Configuration
+//@AutoConfiguration
 public class SpringBeanLifeCycleDemo implements CommandLineRunner {
 
 	@Autowired
