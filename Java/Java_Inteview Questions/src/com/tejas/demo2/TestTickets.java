@@ -12,12 +12,12 @@ public class TestTickets {
 	public static void main(String[] args) {
 
 		List<Ticket> ticketList = new ArrayList<>(Arrays.asList(new Ticket(101, "Tejas", LocalDate.of(2024, 11, 12)),
-				new Ticket(102, "Abhinav", LocalDate.of(2024, 11, 12)),
+				new Ticket(102, "Abhinav", LocalDate.of(2024, 11, 16)),
 				new Ticket(103, "Shantanu", LocalDate.of(2024, 11, 2)),
 				new Ticket(104, "Kaustubh", LocalDate.of(2024, 11, 5)),
 				new Ticket(105, "Tejas", LocalDate.of(2024, 11, 12)),
-				new Ticket(106, "Kaustubh", LocalDate.of(2024, 11, 11)),
-				new Ticket(107, "Kaustubh", LocalDate.of(2024, 11, 12))));
+				new Ticket(106, "Kaustubh", LocalDate.of(2024, 11, 16)),
+				new Ticket(107, "Kaustubh", LocalDate.of(2024, 11, 16))));
 		
 		
 		getTicketsAssignedToEmployeeToday(ticketList);

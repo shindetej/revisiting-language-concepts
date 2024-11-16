@@ -1,11 +1,11 @@
-#### **Interview 1 | 11112024 | Java Developer ** --- next round (endava)          
+#### **Interview 4 | 11112024 | Java Developer ** --- next round (endava)          
 - Java versions after java 8
 - Java 8 default method in interfaces
 - puzzle of 3 Litre and 5 litre jar to fill 4 litre jar
 - get tickets count for employee list from table where ticketlist is present
 - 
 
-#### **Interview 1 | 09112024 | Sr. SD** ---- tech m failed
+#### **Interview 3 | 09112024 | Sr. SD** ---- tech m failed
 - Encapsulation and access modifiers
 - Annotations used in your spring project - answer this in good structured way
 - can we use @Component instead of @Service over service layer class
@@ -15,7 +15,7 @@
 - Unit testing and integration testing difference 
 - Mockbean difference
 
-#### **Interview 1 | 05112024 | Java developer position**  --- next round
+#### **Interview 2 | 05112024 | Java developer position**  --- next round
 - how you monitor the health of the applications
 - how you have deployed spring boot application on aws server
 - what kind of logs used on production server (log_info,LOG_DEBUG)
@@ -24,7 +24,7 @@
 - give me department where more than 3 employees working
 - @autowired and @bean difference
 - method reference and lambda expression difference
-- map() in java8 and other any map difference
+- map() vs flatMap() difference
 
 #### **Interview 1 | 26102024 | Java developer position** 
 - How your services communicates

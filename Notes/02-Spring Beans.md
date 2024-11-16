@@ -1,12 +1,61 @@
 Lifecycle :
+- A Spring Bean is any Java object registered within the Spring IoC container.
+- Beans are created, configured, and managed by Spring. 
+- Bean life cycle is managed by the spring container. 
 
 Bean lifecycle :
-1. **Bean Instantiation**: Spring creates the bean.
-2. **Dependency Injection**: Spring injects dependencies or properties.
-3. **Custom Initialization**: Any initialization logic runs (optional).
-4. **Ready for Use**: The bean is fully configured and can be used.
-5. **Destruction**: Cleanup happens before the bean is removed (optional).
+> Bean Instantiation -> Dependency Injection -> Pre-Initialization ->
+Custom Initialization -> Ready for Use -> Pre-Destruction -> Custom Destruction -> Bean Removed
 
+### **Spring Bean Lifecycle**
+The lifecycle of a Spring Bean consists of several phases, from instantiation to destruction. Here are the steps:
+
+1. **Bean Instantiation**:
+   - The IoC container instantiates the bean based on the bean definition.
+
+2. **Populate Properties**:
+   - The container injects dependencies into the bean (using setter injection, constructor injection, or field injection).
+
+3. **`BeanNameAware` Callback** (Optional):
+   - If the bean implements `BeanNameAware`, it receives its bean name.
+
+4. **`BeanFactoryAware` Callback** (Optional):
+   - If the bean implements `BeanFactoryAware`, it gets a reference to the `BeanFactory`.
+
+5. **Pre-Initialization (`@PostConstruct` or `InitializingBean`)**:
+   - The container calls `@PostConstruct`-annotated methods or `afterPropertiesSet()` if the bean implements the `InitializingBean` interface.
+
+6. **Custom Initialization Method (Optional)**:
+   - If an `init-method` is specified in the configuration or the bean has a custom initialization method, this is invoked.
+
+7. **Bean Ready for Use**:
+   - The bean is fully initialized and ready to be used by the application.
+
+8. **Pre-Destruction (`@PreDestroy` or `DisposableBean`)**:
+   - Before the bean is destroyed, `@PreDestroy`-annotated methods or `destroy()` (if the bean implements `DisposableBean`) are called.
+
+9. **Custom Destroy Method (Optional)**:
+   - If a custom destroy method is specified, it is invoked.
+
+10. **Bean Destruction**:
+    - The container removes the bean from the IoC container.
+
+
+---
+
+### **Key Annotations and Interfaces**
+1. **Annotations**:
+   - `@Component`: Marks a class as a Spring-managed bean.
+   - `@PostConstruct`: Defines a method to run after dependency injection.
+   - `@PreDestroy`: Defines a method to run before the bean is destroyed.
+
+2. **Interfaces**:
+   - `BeanNameAware`: Provides the bean's name.
+   - `BeanFactoryAware`: Provides access to the `BeanFactory`.
+   - `InitializingBean`: Defines a method (`afterPropertiesSet`) called after dependency injection.
+   - `DisposableBean`: Defines a method (`destroy`) called before destruction.
+
+This lifecycle ensures that beans are properly initialized, used, and destroyed, facilitating clean and efficient resource management in Spring applications.
 
 --- 
 ### Spring bean lifecycle : 
