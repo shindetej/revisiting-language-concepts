@@ -247,7 +247,95 @@
 ---
 
 ### **5. Default and Static Methods in Interfaces** (Enhances interface capabilities)
-- 
+- Before Java 8, If you wanted to add a new method to an interface, all classes implementing the interface would break because they would need to provide an implementation for the new method.
+- Default methods allow you to add new methods to an interface with a default implementation, ensuring that existing classes do not break.
+- It made possible to add forEach(), sort(),stream() methods to add in existing interfaces
+
+- code :
+    ```java
+        public interface DupListInterface {
+                void existingMethod();
+                default void sort() {
+                    System.out.println("sort() : List in CF implemented sort as default method as in demo,hence backward compatibility i.e No Impact on Existing Impl in Libraries");
+                    }
+                default void spliterator() {
+                    System.out.println("spliterator() : List in CF implemented sort as default method as in demo");
+                    }
+        }
+
+        // sub class 
+        public class DefaultAndStaticDemo implements DupListInterface{
+                @Override
+                public void existingMethod() {
+                    System.out.println("existingMethod() implemented in DefaultAndStaticDemo class");		
+                }
+
+            }
+
+        
+        // main class
+        public class TestMain {
+                public static void main(String[] args) {
+                        DupListInterface ci =  new DefaultAndStaticDemo();
+                        
+                        ci.existingMethod();
+                        ci.sort();
+                        ci.spliterator();
+                }
+            }
+    ```
+- Since Java allows classes to implement multiple interfaces, it’s important to know what happens when a class implements several interfaces that define the same default methods.
+- code :   the code simply won’t compile as there’s a conflict caused by multiple interface inheritance (a.k.a the Diamond Problem).
+    ```java
+    public interface Vehicle {
+    
+            String getBrand();
+            
+            String speedUp();
+            
+            String slowDown();
+            
+            default String turnAlarmOn() {
+                return "Turning the vehicle alarm on.";
+            }
+            
+            default String turnAlarmOff() {
+                return "Turning the vehicle alarm off.";
+            }
+        }
+
+        public interface Alarm {
+
+            default String turnAlarmOn() {
+                return "Turning the alarm on.";
+            }
+            
+            default String turnAlarmOff() {
+                return "Turning the alarm off.";
+            }
+        }
+        // The Car class would inherit both sets of default methods
+        public class Car implements Vehicle, Alarm {
+            // ...
+        }
+    ```
+- To solve this ambiguity, we must explicitly provide an implementation for the methods:
+    ```java
+        @Override
+        public String turnAlarmOn() {
+            // custom implementation OR
+             return Vehicle.super.turnAlarmOn();// OR
+            // return Alarm.super.turnAlarmOn();
+
+        }
+            
+        @Override
+        public String turnAlarmOff() {
+            // custom implementation OR
+             return Vehicle.super.turnAlarmOff(); //OR
+            // return Alarm.super.turnAlarmOff();
+        }
+    ```
 
 ---
 
@@ -292,16 +380,40 @@
 ---
 
 ### **9. New Date and Time API (java.time package)** (Modern date and time handling)
-   - **Importance**: Java 8 introduced a much-improved `java.time` package, replacing the old `java.util.Date` and `java.util.Calendar` APIs.
-   - **Learn**:
-     - Classes: `LocalDate`, `LocalTime`, `LocalDateTime`, `ZonedDateTime`, `Period`, `Duration`.
-     - Formatting and parsing dates with `DateTimeFormatter`.
-     - **Practical Exercises**: Use the new date and time API to perform date manipulations and format dates.
-     ```java
-     LocalDate date = LocalDate.now();
-     LocalTime time = LocalTime.of(12, 30);
-     System.out.println(date);  // 2024-10-31
-     ```
+- **Importance**: Java 8 introduced a much-improved `java.time` package, replacing the old `java.util.Date` and `java.util.Calendar` APIs.
+- **Learn**:
+    - Classes: `LocalDate`, `LocalTime`, `LocalDateTime`, `ZonedDateTime`, `Period`, `Duration`.
+    - Formatting and parsing dates with `DateTimeFormatter`
+
+- Why new Date time APIs ?
+    - Old Date & Calendar classes are mutable,not thread safe ,New APIs overcomes it
+    - Old has confusing and inconsistent design ,New Follows consitent API names + Seperation of concern
+        - LocalTime = for time withoud dates
+        - LocalDate = for date without time
+        - LocalDateTime =  for both
+        - ZonedDateTime = for date time with zone
+- Simple code : 
+    ```java
+    LocalTime localTime = LocalTime.now();
+    System.out.println("Local Time : "+localTime);
+    LocalDate localDate = LocalDate.now();
+    System.out.println("Local Date : "+localDate);
+    LocalDateTime localDateTime = LocalDateTime.now();
+    System.out.println("Local Date Time : "+localDateTime);
+    
+    // get formatted date using date time formatter pattern
+    DateTimeFormatter format =  DateTimeFormatter.ofPattern("dd-MMM-yyyy hh:mm:ss");
+    System.out.println("Date time in our format :dd-MMM-yyyy hh:mm:ss :  "+localDateTime.format(format));
+    
+    
+    // get specified date
+    DateTimeFormatter format1 =  DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+    LocalDate date = LocalDate.of(1987, 12, 29);
+    System.out.println(date.format(format1));
+    System.out.println("Get date after 10 days from now : "+ LocalDate.now().plusDays(10));
+    ZoneId zone = ZoneId.of("America/New_York");
+	System.out.println(ZonedDateTime.now(zone).format(format));
+    ```
 
 ---
 
