@@ -104,3 +104,63 @@ Database (CRUD operations)
 Session Close
 
 ```
+---
+Hibernate crud methods
+- get()
+- save()
+- update()
+- delete()
+---
+
+```java
+public class HBUtils{
+    private static SessionFactory factor;
+    static{
+        try{
+            Configuration config =  new Configuration();
+            config.configure("hibernate.cfg.xml"); // hibernate.cfg.xml is properties file where database & hibernate configurations saved
+
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                                                                .applySettings(config.getProperties())
+                                                                .build();
+
+            factory = config.buildSessionFactory();
+        }
+        catch(Exception e){
+            e.printstacktrace()
+        }
+   }
+
+   public static SessionFactory getSessionFactory(){
+    return factory;
+   }
+
+   public static void shutdown(){
+    factory.close();
+   }
+}
+```
+### About hibernate.cfg.xml :
+- below are some properties from xml file we consider configuring hibernate connection
+```xml
+<!-- JDBC Database connection settings -->
+      <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+      <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/mydb</property>
+      <property name="hibernate.connection.username">myuser</property>
+      <property name="hibernate.connection.password">mypassword</property>
+<!-- Hibernate properties -->
+      <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+      <property name="hibernate.hbm2ddl.auto">update</property>
+      <property name="hibernate.show_sql">true</property>
+      <property name="hibernate.format_sql">true</property>
+```
+- In spring boot Hibernate is auto configured using JPA hence above xml content not used
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/mydb
+spring.datasource.username=myuser
+spring.datasource.password=mypassword
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+```
+- Spring Boot handles the configuration of SessionFactory, EntityManager, and Hibernate properties without needing the explicit hibernate.cfg.xml file.
