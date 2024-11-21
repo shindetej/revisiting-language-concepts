@@ -1,4 +1,4 @@
-package com.tejas;
+package com.tejas.codes;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.tejas.demo2;
+package com.tejas.models;
 
 import java.time.LocalDate;
 import java.util.Date;

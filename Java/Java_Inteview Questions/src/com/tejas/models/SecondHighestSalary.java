@@ -1,4 +1,4 @@
-package com.tejas.demo2;
+package com.tejas.models;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -16,27 +16,26 @@ public class SecondHighestSalary {
 		getNthHighestSalary(empList, 2);
 		getCountOfEmployeesGroupBySalaries(empList);
 	}
-	
-	
-	
+
 	/*
-	 * 1. Get distinct salary in using SET
-	 * 2. Sort it to descending(high 1st) using revered
-	 * */
+	 * 1. Get distinct salary in using SET 2. Sort it to descending(high 1st) using
+	 * revered
+	 */
 	public static void getNthHighestSalary(List<Employee> empList, Integer nth) {
 		Set<Double> setOfUniqueSalaries = empList.stream().map(emp -> emp.getSalary()) // 1. get salary from employee
 																						// object
 				.collect(Collectors.toSet()); // 2. add it to the set (unique salaries)
 
-		double nthHighestSalary = setOfUniqueSalaries.stream() // created new stream to make list from set (to get indexed based access)
+		double nthHighestSalary = setOfUniqueSalaries.stream() // created new stream to make list from set (to get
+																// indexed based access)
 				.sorted(Comparator.reverseOrder()) // descending sorting order
 //				.sorted((n1,n2)-> n2.compareTo(n1)) // descending sorting order
 				.collect(Collectors.toList()) // to list
 				.get(nth - 1); // get n- 1 salary
+		System.out.println("--------------\n" + nth + "th highest  salary given is :" + nthHighestSalary);
 
 		empList.stream().filter(emp -> emp.getSalary() == nthHighestSalary).collect(Collectors.toList())
 				.forEach(n -> System.out.println(n.getName()));
-		System.out.println("--------------\n" + nth + "th highest  salary given is :" + nthHighestSalary);
 
 	}
 

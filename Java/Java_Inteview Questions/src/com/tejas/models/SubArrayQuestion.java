@@ -1,4 +1,4 @@
-package com.tejas.demo2;
+package com.tejas.models;
 
 import java.util.ArrayList;
 import java.util.List;

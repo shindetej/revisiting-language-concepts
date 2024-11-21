@@ -1,4 +1,4 @@
-package com.tejas.demo2;
+package com.tejas.models;
 
 public class Employee {
 	int empid;
