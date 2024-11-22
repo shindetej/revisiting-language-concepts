@@ -1,4 +1,4 @@
-package com.tejas.srp;
+package com.tms.srp;
 
 // Employee handles only employee-related data.
 public class Employee {

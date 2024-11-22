@@ -1,4 +1,4 @@
-package com.tejas.srp;
+package com.tms.srp;
 
 import java.io.FileWriter;
 import java.io.IOException;
