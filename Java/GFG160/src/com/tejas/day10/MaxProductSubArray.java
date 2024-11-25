@@ -2,8 +2,9 @@ package com.tejas.day10;
 
 public class MaxProductSubArray {
 	public static void main(String[] args) {
-		int[] arr = { -1, -3, -10, 0, 6 };
+		int[] arr = { 2,3,-2,4 };
 		System.out.println(maxProduct(arr));
+		System.out.println(maxProductBetter(arr));
 	}
 
 	private static int maxProduct(int[] arr) {
@@ -30,5 +31,20 @@ public class MaxProductSubArray {
 		}
 
 		return finalProduct;
+	}
+	private static int maxProductBetter(int[] arr) {
+		int maxProduct = arr[0], minProduct = arr[0], finalProduct = arr[0];
+		int n = arr.length;
+		int maxProd = Integer.MIN_VALUE;
+		for (int i = 0; i < n; i++) {
+			int product = 1;
+			for (int j = i; j < n; j++) {
+				product *= arr[j];
+				maxProd = Math.max(product, maxProd);
+			}
+//			System.out.println("max sum after "+ i+"th iteration :"+maxSum );
+
+		}
+		return maxProd;
 	}
 }
