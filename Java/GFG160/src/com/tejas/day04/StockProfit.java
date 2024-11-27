@@ -1,4 +1,4 @@
-package com.tejas.day4;
+package com.tejas.day04;
 
 public class StockProfit {
 

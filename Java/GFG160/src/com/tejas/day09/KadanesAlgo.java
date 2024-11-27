@@ -1,4 +1,4 @@
-package com.tejas.day9;
+package com.tejas.day09;
 
 // find max sum subarray from given list of array
 public class KadanesAlgo {
@@ -19,6 +19,7 @@ public class KadanesAlgo {
 		maxSumSubarray(arr2);
 	}
 
+	// KADANE's formula 
 	private static int maxSubarraySum(int[] arr) {
 		int sum = 0, n = arr.length;
 		int maxSum = Integer.MIN_VALUE;

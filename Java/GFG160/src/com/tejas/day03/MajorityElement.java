@@ -1,4 +1,4 @@
-package com.tejas.day3;
+package com.tejas.day03;
 
 import java.util.ArrayList;
 import java.util.Arrays;
