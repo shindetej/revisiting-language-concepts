@@ -38,7 +38,6 @@ public class MaxPossibleWords {
 			count = Math.min(count, quotient);
 			System.out.println("count " + count);
 		}
-
 		return count;
 	}
 }
