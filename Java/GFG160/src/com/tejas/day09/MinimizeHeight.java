@@ -1,4 +1,4 @@
-package com.tejas.day9;
+package com.tejas.day09;
 
 import java.util.Arrays;
 
