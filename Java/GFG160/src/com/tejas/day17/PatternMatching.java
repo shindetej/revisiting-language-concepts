@@ -8,7 +8,7 @@ import java.util.List;
 public class PatternMatching {
 
 	public static void main(String[] args) {
-		String pat = "aaba";
+		String pat = "aabac#cabaa";
 		String txt = "aabaacaadaabaaba";
 
 		List<Integer> resultList = search(pat, txt);
