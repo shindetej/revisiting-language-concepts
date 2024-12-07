@@ -21,9 +21,12 @@ public class MinCharForPalindrome {
 		    charArray[j] = temp;
 		}
 		
+		// lps array for string + # + reversed string
 		String hashString = s+"#"+new String(charArray);
-		System.out.println(Arrays.toString(getLPS(hashString)));
+
 		int[] lps = getLPS(hashString);
+		
+		// length of string - last index value of lps array
 		cnt = s.length() - lps[lps.length-1];
 		return cnt;
 	}
