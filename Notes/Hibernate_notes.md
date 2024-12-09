@@ -156,6 +156,8 @@ public class HBUtils{
       <property name="hibernate.show_sql">true</property>
       <property name="hibernate.format_sql">true</property>
 ```
+---
+
 - In spring boot Hibernate is auto configured using JPA hence above xml content not used
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/mydb
@@ -178,15 +180,16 @@ In Hibernate, both `factory.getCurrentSession()` and `factory.openSession()` are
 - **Thread Safety**: The session is tied to the current thread and not thread-safe across multiple threads.
 - **Ease of Use**: Ideal for transactional code where you don’t want to manually manage the session lifecycle.
 - **Configuration**: Requires `hibernate.current_session_context_class` to be set in your configuration (e.g., `thread` or `jta`).
+```xml
+<property name="hibernate.current_session_context_class">thread</property>
+```
 
-**Example Usage:**
 ```java
 Session session = factory.getCurrentSession();
 session.beginTransaction();
 MyEntity entity = session.get(MyEntity.class, 1);
 session.getTransaction().commit(); // Session is automatically closed here.
 ```
-
 ---
 
 ### **2. `factory.openSession()`**
@@ -195,7 +198,6 @@ session.getTransaction().commit(); // Session is automatically closed here.
 - **Thread Safety**: Not thread-safe; each call to `openSession()` creates a new session.
 - **Flexibility**: Useful for non-transactional operations or cases where you want complete control over the session lifecycle.
 
-**Example Usage:**
 ```java
 Session session = factory.openSession();
 Transaction transaction = session.beginTransaction();
@@ -203,9 +205,7 @@ MyEntity entity = session.get(MyEntity.class, 1);
 transaction.commit();
 session.close(); // Must be closed explicitly.
 ```
-
 ---
-
 ### **Which One to Prefer?**
 #### **`factory.getCurrentSession()`**:
 - Preferred when using **transactional, request-scoped, or short-lived operations**.
@@ -218,6 +218,106 @@ session.close(); // Must be closed explicitly.
 
 ---
 
-### **Best Practices:**
-- Use **`getCurrentSession()`** in most scenarios where Hibernate's session and transaction lifecycle management can be leveraged.
-- Use **`openSession()`** only when necessary for fine-grained session control or in non-transactional contexts.
+### HQL (Hibernate query language)
+- It is an OO Query language that is similar to SQL but operates on Hibernate's persistent objects rather than directly on database tables.
+
+- demo example
+
+    ```java
+    // Setting up HBUtils.java for getting session factory -> session
+    public class HBUtils {
+
+        private static SessionFactory sessionFactory = createSessionFactory();
+
+        private static ServiceRegistry serviceRegistry;
+
+        private static SessionFactory createSessionFactory() {
+            serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
+
+            Metadata metadata = new MetadataSources(serviceRegistry).buildMetadata();
+
+            return metadata.getSessionFactoryBuilder().build();
+        }
+
+        public static void shutdown() {
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+            if (serviceRegistry != null) {
+                StandardServiceRegistryBuilder.destroy(serviceRegistry);
+            }
+        }
+
+        public static SessionFactory getSessionFactory() {
+            return sessionFactory;
+        }
+
+        // IF you are using getCurrentSession() transaction management is must refer notes above
+        public static void beginTransaction() {
+            Session session = sessionFactory.getCurrentSession();
+            session.getTransaction().begin();
+        }
+        
+        public static void commitTransaction() {
+            Session session = sessionFactory.getCurrentSession();
+            session.getTransaction().commit();
+        }
+        
+        public static void rollBackTransaction() {
+            Session session = sessionFactory.getCurrentSession();
+            session.getTransaction().rollback();
+        }
+
+    }
+
+
+    // Book model
+    @Entity
+    @Table(name = "book_table")
+    public class Book {
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private int id;
+        @Column(name = "book_name")
+        private String bookName;
+        private String author;
+        private double price;
+        private float rating;
+        @Temporal(TemporalType.DATE)
+        @Column(name = "release_date")
+        private Date releaseDate;
+        private String  category;
+
+        public Book() {
+
+        }
+        // parameterized contructor getter and setters + toString 
+        }
+
+    class Main{
+    public static void main(String[] args) {
+            BookDaoImpl bookDao = new BookDaoImpl();
+    try {
+                System.out.println("HI");
+                HBUtils.beginTransaction();
+
+                // get books where category = "Fiction"
+                List<Book> bookList = bookDao.getByCategory("Fiction");
+                System.out.println(bookList);
+                HBUtils.commitTransaction();
+            } catch (Exception e) {
+                HBUtils.rollBackTransaction();
+            }
+
+    }
+    }
+    // BookDaoImpl.java
+    public List<Book> getByCategory(String category) {
+            Session session = factory.getCurrentSession();
+            String hq = "from Book b where b.category = :category";
+            
+            Query  query =  session.createQuery(hq,Book.class);
+            query.setParameter("category", category);
+            return query.getResultList();
+        }
+    ```
