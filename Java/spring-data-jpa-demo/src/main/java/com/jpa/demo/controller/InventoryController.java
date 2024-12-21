@@ -42,8 +42,8 @@ public class InventoryController {
 
 	
 	@GetMapping
-	public ResponseEntity<?> getInventoryList(@RequestParam Long itemId, @RequestParam String itemName,
-			@RequestParam Double itemPrice) {
+	public ResponseEntity<?> getInventoryList(@RequestParam(required = false) Long itemId, @RequestParam(required = false) String itemName,
+			@RequestParam(required=false) Double itemPrice) {
 
 		List<InventoryItem> list = inventoryService.getInventoryList(itemId, itemName, itemPrice);
 		if (list != null)
