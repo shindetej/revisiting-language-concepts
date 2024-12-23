@@ -1,4 +1,4 @@
-package com.tejas.day035;
+package com.tejas.day037;
 
 import java.util.Arrays;
 
@@ -8,23 +8,20 @@ public class RotateMatrix90Deg {
 
 //		rotateArray(arr);
 		rotateArrayWithoutExtraSpace(arr);
-
-//		for (int[] a : arr) {
-//			System.out.println(Arrays.toString(a));
-//		}
+//		rotateArrayWithoutExtraSpaceWithSingleLoop(arr);
 
 	}
 
 	private static void rotateArrayWithoutExtraSpace(int[][] mat) {
 		int n = mat.length;
 
-		for (int i = 0; i <= n - 1; i++) {
-			for (int j = 0; j <= n - 1; j++) {
-				if (i < j) {
-					int temp = mat[i][j];
-					mat[i][j] = mat[j][i];
-					mat[j][i] = temp;
-				}
+		for (int i = 0; i < n; i++) {
+			for (int j = i + 1; j < n; j++) {
+
+				int temp = mat[i][j];
+				mat[i][j] = mat[j][i];
+				mat[j][i] = temp;
+
 			}
 		}
 
@@ -35,6 +32,26 @@ public class RotateMatrix90Deg {
 				mat[n - 1 - i][j] = temp;
 			}
 		}
+
+		for (int[] a : mat) {
+			System.out.println(Arrays.toString(a));
+		}
+
+	}
+
+	private static void rotateArrayWithoutExtraSpaceWithSingleLoop(int[][] mat) {
+		int n = mat.length;
+
+		for (int i = 0; i < n / 2; i++) {
+			for (int j = i; j < n - i - 1; j++) {
+				int temp = mat[i][j];
+				mat[i][j] = mat[j][n - 1 - i];
+				mat[j][n - 1 - i] = mat[n - 1 - i][n - 1 - j];
+				mat[n - 1 - i][n - 1 - j] = mat[n - 1 - j][i];
+				mat[n - 1 - j][i] = temp;
+			}
+		}
+
 		for (int[] a : mat) {
 			System.out.println(Arrays.toString(a));
 		}

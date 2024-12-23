@@ -28,3 +28,5 @@ local.properties
 
 # STS
 .springBeans
+
+*.pdf
