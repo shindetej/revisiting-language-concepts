@@ -1,11 +1,13 @@
-package com.jpa.demo.dtp;
+package com.jpa.demo.dto;
 
 import java.util.List;
 
 public class OrderRequestDTO {
 	private Double amount;
-	private String modeOfPayment; 
+	private String modeOfPayment;
 	private Long customerId;
+	private Long paymentId;
+	private Long trackingId;
 	private List<Integer> itemIds;
 	private String logistic; // e.g., "Standard", "Express"
 
@@ -13,16 +15,18 @@ public class OrderRequestDTO {
 	public OrderRequestDTO() {
 	}
 
-	public OrderRequestDTO(Double amount, String modeOfPayment, Long customerId, List<Integer> itemIds,
-			String logistic) {
+	public OrderRequestDTO(Double amount, String modeOfPayment, Long customerId, Long paymentId, Long trackingId,
+			List<Integer> itemIds, String logistic) {
+		super();
 		this.amount = amount;
 		this.modeOfPayment = modeOfPayment;
 		this.customerId = customerId;
+		this.paymentId = paymentId;
+		this.trackingId = trackingId;
 		this.itemIds = itemIds;
 		this.logistic = logistic;
 	}
 
-	// Getters and Setters
 	public Double getAmount() {
 		return amount;
 	}
@@ -47,6 +51,22 @@ public class OrderRequestDTO {
 		this.customerId = customerId;
 	}
 
+	public Long getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(Long paymentId) {
+		this.paymentId = paymentId;
+	}
+
+	public Long getTrackingId() {
+		return trackingId;
+	}
+
+	public void setTrackingId(Long trackingId) {
+		this.trackingId = trackingId;
+	}
+
 	public List<Integer> getItemIds() {
 		return itemIds;
 	}
@@ -65,7 +85,11 @@ public class OrderRequestDTO {
 
 	@Override
 	public String toString() {
-		return "OrderRequestDTO{" + "amount=" + amount + ", modeOfPayment='" + modeOfPayment + '\'' + ", customerId="
-				+ customerId + ", itemIds=" + itemIds + ", logistic='" + logistic + '\'' + '}';
+		return "OrderRequestDTO [amount=" + amount + ", modeOfPayment=" + modeOfPayment + ", customerId=" + customerId
+				+ ", paymentId=" + paymentId + ", trackingId=" + trackingId + ", itemIds=" + itemIds + ", logistic="
+				+ logistic + "]";
 	}
+	
+	
+
 }

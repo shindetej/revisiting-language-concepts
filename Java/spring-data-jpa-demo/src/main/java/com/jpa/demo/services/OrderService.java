@@ -5,10 +5,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jpa.demo.dtp.OrderRequestDTO;
+import com.jpa.demo.dto.OrderRequestDTO;
 import com.jpa.demo.exceptions.InvalidOrderIdException;
 import com.jpa.demo.models.InventoryItem;
 import com.jpa.demo.models.ItemOrder;
@@ -38,7 +37,7 @@ public class OrderService implements IOrderService {
 		this.orderRepo= orderRepo;
 		this.inventoryRepo = inventoryRepo;
 		this.paymentRepo =paymentRepo;
-		this.inventoryRepo =inventoryRepo;
+		this.trackingRepo =trackingRepo;
 	}
 	
 
@@ -63,15 +62,15 @@ public class OrderService implements IOrderService {
 	}
 
 	@Override
-	public ItemOrder update(OrderRequestDTO request,Integer orderId, Long paymentId, Long trackId) {
+	public ItemOrder update(OrderRequestDTO request,Integer orderId) {
 		ItemOrder existingOrder = orderRepo.findById(orderId)
-				.orElseThrow(() -> new InvalidOrderIdException("Order Not Found"));
+				.orElseThrow(() -> new InvalidOrderIdException("Order Id Invalid"));
 
 		// Find the Payment and Tracking entities by their respective IDs
-		Payment payment = paymentRepo.findById(paymentId)
+		Payment payment = paymentRepo.findById(request.getPaymentId())
 				.orElseThrow(() -> new EntityNotFoundException("Payment not found"));
 
-		Tracking tracking = trackingRepo.findById(trackId)
+		Tracking tracking = trackingRepo.findById(request.getTrackingId())
 				.orElseThrow(() -> new EntityNotFoundException("Tracking not found"));
 
 		payment.setAmount(request.getAmount());

@@ -10,8 +10,6 @@ import com.jpa.demo.exceptions.InvalidOrderIdException;
 import com.jpa.demo.models.Tracking;
 import com.jpa.demo.repos.ITrackingRepository;
 
-import jakarta.persistence.EntityNotFoundException;
-
 @Service
 public class TrackingService implements ITrackingService {
 
