@@ -1,4 +1,4 @@
-package com.tejas.day42;
+package com.tejas.day042;
 
 import java.util.HashSet;
 import java.util.Set;
