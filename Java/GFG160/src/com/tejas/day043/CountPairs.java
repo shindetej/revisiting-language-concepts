@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class CountPairs {
 	public static void main(String[] args) {
-		int[] arr = { 1, 5, 1, 6, 5, 10, -4, 0 };
+		int[] arr = { 1,1,1,1};
 
-		int target = 6;
+		int target = 2;
 
 		System.out.println("COUNT IS :" + countPairs(arr, target));
 	}
