@@ -321,3 +321,9 @@ session.close(); // Must be closed explicitly.
             return query.getResultList();
         }
     ```
+
+
+### Spring boot Hibernate Integration
+- SB Autoconfiguration and DI simplifies Hibernate ORM use
+- LocalSessionFactoryBean provides session factory while transaction automation is done by HibernateTransactionManager bean
+- Step

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jpa.demo.dtp.OrderRequestDTO;
+import com.jpa.demo.dto.OrderRequestDTO;
 import com.jpa.demo.models.ItemOrder;
 import com.jpa.demo.responses.Response;
 import com.jpa.demo.services.IOrderService;
@@ -38,9 +38,8 @@ public class ItemOrderController {
 	}
 
 	@PutMapping("/{orderId}")
-	public ResponseEntity<?> updateOrder(@RequestBody OrderRequestDTO orderDTO,@PathVariable int orderId, @RequestParam Long paymentId,
-			@RequestParam Long trackingId) {
-		ItemOrder order = orderService.update(orderDTO,orderId, paymentId, trackingId);
+	public ResponseEntity<?> updateOrder(@RequestBody OrderRequestDTO orderDTO,@PathVariable int orderId) {
+		ItemOrder order = orderService.update(orderDTO,orderId);
 		return new ResponseEntity<>(new Response<>("Order Updated Successfully", order, HttpStatus.OK.value()),
 				HttpStatus.OK);
 	}
