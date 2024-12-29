@@ -31,6 +31,9 @@ public class FindTripletsWithZeroSum {
 				int sum = arr[i] + arr[j];
 				map.putIfAbsent(sum, new ArrayList<>());
 				map.get(sum).add(new AbstractMap.SimpleEntry<>(i, j));
+//				List<Entry<Integer, Integer>> list = map.getOrDefault(sum, new ArrayList<>());
+//				list.add(new AbstractMap.SimpleEntry<>(i, j));
+//				map.put(sum, list);		
 			}
 		}
 
