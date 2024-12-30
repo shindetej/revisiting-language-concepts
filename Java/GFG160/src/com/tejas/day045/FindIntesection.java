@@ -2,7 +2,6 @@ package com.tejas.day045;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class FindIntesection {
@@ -13,7 +12,6 @@ public class FindIntesection {
 	}
 
 	private static ArrayList<Integer> intersectionWithDuplicates(int[] a, int[] b) {
-		int n = a.length;
 		Set<Integer> set = new HashSet<>();
 		for (int i : a) {
 			set.add(i);
