@@ -18,7 +18,7 @@ public class PairOfSumInSortedArray {
         
         while(l<r){
             int sum  = arr[l] + arr[r];
-            
+     
             if(sum < target){
                 l++;
             }
