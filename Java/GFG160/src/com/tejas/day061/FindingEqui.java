@@ -1,6 +1,6 @@
 package com.tejas.day061;
 
-public class PrefixSum {
+public class FindingEqui {
 
     public static int findEquilibriumPoint(int[] arr) {
         int totalSum = 0;
