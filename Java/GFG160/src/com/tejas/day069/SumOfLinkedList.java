@@ -13,11 +13,15 @@ public class SumOfLinkedList {
 		list.addLast(3);
 		
 		SLL list2 = new SLL(0);
-		
+	
 		list2.addLast(2);
 		list2.addLast(3);
-	
-		addTwoLists(list.getHead(), list2.getHead());
+		System.out.println("List 1");
+		ReverseGroup.show(list.getHead());
+		System.out.println("\nList 2");
+		ReverseGroup.show(list2.getHead());
+		System.out.println("\nSUM : ");
+		ReverseGroup.show(addTwoLists(list.getHead(), list2.getHead()));
 	}
 	
 	
