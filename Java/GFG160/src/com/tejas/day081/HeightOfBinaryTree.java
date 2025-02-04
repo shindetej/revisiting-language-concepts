@@ -24,6 +24,9 @@ public class HeightOfBinaryTree {
 
 		int height = tt.height(tt.root);
 		System.out.println(height);
+		
+		// DAY 82 activity
+		System.out.println(tt.diameter(tt.root));
 	}
 
 	private void add(int data) {
@@ -74,4 +77,24 @@ public class HeightOfBinaryTree {
 
 		return depth - 1;
 	}
+	
+	static int recursiveDia(Node node,int[] result){
+        if(node == null)
+            return 0;
+        
+        int leftHeight = recursiveDia(node.left,result);
+        int rightHeight= recursiveDia(node.right,result);
+        
+        result[0]=Math.max(result[0],leftHeight+rightHeight);
+        
+        return 1+ Math.max(leftHeight,rightHeight);
+    }
+    
+    
+    int diameter(Node root) {
+        int[] result =  new int[1];
+        
+        recursiveDia(root,result);
+        return result[0];
+    }
 }
