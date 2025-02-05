@@ -22,6 +22,9 @@ public class TreeTraversal {
 		
 		ArrayList<ArrayList<Integer>> numList  = tt.levelOrder(tt.root);
 		System.out.println(numList);
+		tt.mirror(tt.root);
+		numList  = tt.levelOrder(tt.root);
+		System.out.println(numList);
 	}
 
 	private void add(int data) {
@@ -74,4 +77,29 @@ public class TreeTraversal {
 		}
 		return result;
 	}
+	
+	void mirror(Node node) {
+        if(node == null){
+            return;
+        }
+        
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+        
+        while(!queue.isEmpty()){
+            Node current = queue.poll();
+            
+            Node temp = current.right;
+            current.right = current.left;
+            current.left = temp;
+            
+            
+            if(current.left != null){
+                queue.add(current.left);
+            }
+            if(current.right != null){
+                queue.add(current.right);
+            }
+        }
+    }
 }
