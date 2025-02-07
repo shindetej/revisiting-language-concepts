@@ -8,45 +8,50 @@ import com.tejas.day080.Node;
 
 public class TreeTraversal {
 	Node root;
+
 	public TreeTraversal(int data) {
 		this.root = new Node(data);
 	}
 
 	public static void main(String[] args) {
-		TreeTraversal tt = new TreeTraversal(25);
+		TreeTraversal tt = new TreeTraversal(18);
 		tt.add(10);
 		tt.add(20);
 		tt.add(40);
-		tt.add(5);
-		tt.add(15);
+		tt.add(25);
 		
-		ArrayList<ArrayList<Integer>> numList  = tt.levelOrder(tt.root);
-		System.out.println(numList);
-		tt.mirror(tt.root);
-		numList  = tt.levelOrder(tt.root);
-		System.out.println(numList);
+
+//		ArrayList<ArrayList<Integer>> numList = tt.levelOrder(tt.root);
+//		System.out.println(numList);
+//		tt.mirror(tt.root);
+//		numList  = tt.levelOrder(tt.root);
+//		System.out.println(numList);
+
+		// --------- In order traversal code DAY 85
+//		System.out.println(tt.root.data);
+		System.out.println(tt.inOrder(tt.root));
 	}
 
 	private void add(int data) {
 		Node newNode = new Node(data);
-		
+
 		Node trav = this.root;
 		Node parent = null;
-		while(trav != null) {
+		while (trav != null) {
 			parent = trav;
-			if(trav.data  <= data) {
+			if (data <= trav.data) {
 				trav = trav.left;
-			}else if(trav.data > data ) {
-				trav= trav.right;
+			} else if (data > trav.data) {
+				trav = trav.right;
 			}
 		}
-		
-		if(parent.data < data) {
+
+		if ( data < parent.data) {
 			parent.left = newNode;
-		}else {
+		} else {
 			parent.right = newNode;
 		}
-		
+
 	}
 
 	public ArrayList<ArrayList<Integer>> levelOrder(Node root) {
@@ -77,29 +82,46 @@ public class TreeTraversal {
 		}
 		return result;
 	}
-	
+
 	void mirror(Node node) {
-        if(node == null){
-            return;
-        }
-        
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(node);
-        
-        while(!queue.isEmpty()){
-            Node current = queue.poll();
-            
-            Node temp = current.right;
-            current.right = current.left;
-            current.left = temp;
-            
-            
-            if(current.left != null){
-                queue.add(current.left);
-            }
-            if(current.right != null){
-                queue.add(current.right);
-            }
-        }
-    }
+		if (node == null) {
+			return;
+		}
+
+		Queue<Node> queue = new LinkedList<>();
+		queue.add(node);
+
+		while (!queue.isEmpty()) {
+			Node current = queue.poll();
+
+			Node temp = current.right;
+			current.right = current.left;
+			current.left = temp;
+
+			if (current.left != null) {
+				queue.add(current.left);
+			}
+			if (current.right != null) {
+				queue.add(current.right);
+			}
+		}
+	}
+
+	// TREE TRAVERSAL IN ORDER -----------
+
+	// Function to return a list containing the inorder traversal of the tree.
+	ArrayList<Integer> inOrder(Node root) {
+		ArrayList<Integer> list = new ArrayList<>();
+		inOrderTraverseRec(root, list);
+		return list;
+	}
+
+	static void inOrderTraverseRec(Node node, ArrayList<Integer> list) {
+		if (node == null)
+			return;
+
+		inOrderTraverseRec(node.left, list);
+		list.add(node.data);
+		inOrderTraverseRec(node.right, list);
+	}
 }
