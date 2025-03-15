@@ -88,7 +88,18 @@
     ```
 
 4. sorted()
-    - 
+    - Sorts elements in natural order (Comparable) or using a custom comparator.
+    ```java
+        List<Integer> unsortedList1 = Arrays.asList(5, 21, 13, 41, 58, 26);
+		List<Integer> unsortedList2 = Arrays.asList(5, 21, 13, 41, 58, 26);
+		
+		System.out.println("Ascending sorted stream : ");
+		unsortedList1.stream()
+            .sorted().toList().forEach(System.out::println); // sorted ascending order
+		System.out.println("Descending sorted stream : ");
+		unsortedList2.stream()
+            .sorted(Comparator.reverseOrder()).toList().forEach(System.out::println);
+    ```
 5. distinct()
     - Removes duplicate elements from the stream based on equals().
     ```java
@@ -107,4 +118,8 @@
 
     ```
 7. skip(n)
+    - Skips the first n elements and processes the rest.
+    ```java
+
+    ```
 8. peek(Consumer<T>)
