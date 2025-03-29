@@ -123,3 +123,14 @@
 
     ```
 8. peek(Consumer<T>)
+
+
+### 3. Terminal Operations
+- Terminal operations trigger execution and produce a final result as non-stream value(list,integer,boolean etc)
+-    1. collect(Collectors.toList()) → Convert Stream to List (upto java 16)
+    2. collect(Collectors.toSet()) → Convert Stream to Set
+    3. collect(Collectors.toMap()) → Convert Stream to Map
+
+- Reduction Operations: collect(), reduce(), count(), min(), max(), sum()
+- Short-Circuiting Operations: findFirst(), findAny(), anyMatch(), allMatch(), noneMatch()
+- Iteration : forEach()

@@ -41,7 +41,8 @@ public class IntermediateOperationsDemo {
 		System.out.println("\n*********** map() demo *************\n:> map(s->s.toUppercase) use to create uppercase word list");
 		List<String> flavours = Arrays.asList("mango", "Apple", "Pista", "Kesar");
 		System.out.println("\nOriginal list of flavours : " + flavours);
-		List<String> upperFlavours = flavours.stream().map(s -> s.toUpperCase()) // map() used to convert string to
+		List<String> upperFlavours = flavours.stream()
+											.map(s -> s.toUpperCase()) // map() used to convert string to
 																					// uppercase taking Function()
 				.collect(Collectors.toList());
 		System.out.println("After map used :: list of flavours : " + upperFlavours);
