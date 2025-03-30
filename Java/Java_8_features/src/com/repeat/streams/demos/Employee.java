@@ -61,8 +61,8 @@ class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", name=" + name + ", age=" + age + ", department=" + department
-				+ ", salary=" + salary + "]";
+		return "Employee {empId:" + empId + ", name:" + name + ", age:" + age + ", department:" + department
+				+ ", salary:" + salary + "}\n";
 	}
 
 	public static List<Employee> getEmployeeTestList() {

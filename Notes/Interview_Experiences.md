@@ -94,3 +94,6 @@ Spring Batch Processing
 #### Spring quesions:
 - What is IOC? / dependency injection?
 - Spring bean lifecycle.
+- All basic Annotations 
+- Difference between @Controller @Component @Service @Repository
+- Spring Data JPA annotations
