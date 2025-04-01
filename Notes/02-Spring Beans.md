@@ -55,8 +55,6 @@ The lifecycle of a Spring Bean consists of several phases, from instantiation to
    - `InitializingBean`: Defines a method (`afterPropertiesSet`) called after dependency injection.
    - `DisposableBean`: Defines a method (`destroy`) called before destruction.
 
-This lifecycle ensures that beans are properly initialized, used, and destroyed, facilitating clean and efficient resource management in Spring applications.
-
 --- 
 ### Spring bean lifecycle : 
 

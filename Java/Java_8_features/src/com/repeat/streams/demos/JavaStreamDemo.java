@@ -48,7 +48,7 @@ public class JavaStreamDemo {
 	// Find the second-highest salary given by the organization
 	private static void getNthHighestSalary(List<Employee> emps, int nth) {
 		Double nthSalary = emps.stream().map(Employee::getSalary).distinct().sorted(Comparator.reverseOrder())
-				.skip(nth - 1).findFirst().orElse((double) 0);
+				.skip(nth - 1).findFirst().orElse(null);
 		System.out.println("\n***** " + nth + "th highest salary is :" + nthSalary);
 	}
 
@@ -61,11 +61,11 @@ public class JavaStreamDemo {
 
 	// Find the employee with the highest salary
 	private static void getEmployeeWithHighestSalary(List<Employee> employees) {
-		System.out.println("\n*****get employee with highest salary: ");
-		employees.stream()
-				.sorted(Comparator.comparing(Employee::getSalary)
-				.reversed()).findFirst()
+		System.out.println("\n*****get employee with highest salary using sort reverse: ");
+		employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst()
 				.ifPresent(System.out::println);
+		System.out.println("\n*****get employee with highest salary using max() efficient approach : ");
+		employees.stream().max(Comparator.comparing(Employee::getSalary)).ifPresent(System.out::println);
 	}
 
 	// Group employees by department and calculate their average salary

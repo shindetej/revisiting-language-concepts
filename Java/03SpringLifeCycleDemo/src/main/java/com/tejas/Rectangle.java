@@ -48,7 +48,20 @@ public class Rectangle implements QuadShape,InitializingBean,DisposableBean,Bean
 		System.out.println("In "+this.name+".calcArea()");
 		return this.length*this.breadth;
 	}
+	
+	@Override
+	public void setBeanName(String name) {
+		this.name = name;
+		System.out.println("In "+this.name+".BeanNameAware.setBeanName()");
+		
+	}
 
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		System.out.println("IN ApplicationContextAware.setApplicationContext()");
+		
+	}
+	
 	@Override
 	public void destroy() throws Exception {
 		System.out.println("In "+this.name+".DisposableBean.destroy()");
@@ -70,20 +83,5 @@ public class Rectangle implements QuadShape,InitializingBean,DisposableBean,Bean
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("In "+this.name+".InitializingBean.afterPropertiesSet()");
 	}
-	
-	@Override
-	public void setBeanName(String name) {
-		this.name = name;
-		System.out.println("In "+this.name+".BeanNameAware.setBeanName()");
-		
-	}
-
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		System.out.println("IN ApplicationContextAware.setApplicationContext()");
-		
-	}
-	
-	
 
 }

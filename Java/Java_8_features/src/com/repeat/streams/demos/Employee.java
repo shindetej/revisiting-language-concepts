@@ -80,6 +80,7 @@ class Employee {
 		employees.add(new Employee(109, "Hank", 31, "IT", 62000));
 		employees.add(new Employee(110, "Ivy", 28, "HR", 54000));
 		employees.add(new Employee(111, "Jack", 35, "Finance", 80000));
+		employees.add(new Employee(119, "Jane", 35, "IT", 80000));
 		employees.add(new Employee(112, "Kevin", 27, "Marketing", 59000));
 		employees.add(new Employee(113, "Liam", 30, "IT", 61000));
 		employees.add(new Employee(114, "Mia", 29, "Finance", 76000));
