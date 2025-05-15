@@ -1,6 +1,4 @@
-> **Chatgpt : Please list out points that I need to cover on Exception Handling from basic to latest advanced**
 
-Certainly! Exception handling is an important topic in Java software development interviews. Here is a list of points you should cover, from basic to advanced, to demonstrate your understanding of exception handling in Java:
 
 **Basic Concepts:**
 

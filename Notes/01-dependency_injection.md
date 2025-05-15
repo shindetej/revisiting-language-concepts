@@ -5,6 +5,11 @@
 3. Inheritance = Hierarchial Relationship , Composition = modular 
 ----
 ### Dependency Injection : 
+- NOTE ON 01-05-2025 : 
+- Spring achieves IOC with DI and what IOC is below : 
+	- a design principle where control of object creation and dependency management is transfered from application code to the spring container
+	- DI injects runtime dependencies instead of class creates it.
+	- 
 ---
 
 
